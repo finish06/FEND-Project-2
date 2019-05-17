@@ -1,14 +1,16 @@
-/*
- * Create a list that holds all of your cards
- */
+// Global variable to count turns
+var i = 0;
 
+// Create a list that holds all of your cards
+function getCards() {
+    const cards = document.querySelectorAll(".card");
+    let cardsArray = Array.from(cards);
+    return cardsArray;
+}
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+function removeClass(card) {
+    card.classList.remove("open", "show")
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -21,10 +23,68 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
+// Create game
+function createGame() {
+    let cards = getCards();
+    cards = shuffle(cards);
+    for (let card of cards) {
+        document.querySelector(".deck").append(card);
+        card.classList.remove("match", "open", "show");
+    }
+    // Set moves to 0
+    const count = document.querySelector(".moves");
+    count.innerHTML = "0";
+}
+
+// Establish game on DOMload
+document.addEventListener('DOMContentLoaded', function() {
+    createGame();
+    const restart = document.querySelector(".restart");
+    restart.addEventListener("click", createGame());
+})
+
+// Show cards
+function showCard(card) {
+    card.classList.add("open", "show");
+    if (document.querySelectorAll(".open").length > 1) {
+        const count = document.querySelector(".moves");
+        i += 1;
+        if (i > 10) {
+            document.getElementById("star-three").style.color = "white";
+        }
+        if (i > 15) {
+            document.getElementById("star-two").style.color = "white";
+        }
+        if (i > 20) {
+            document.getElementById("star-one").style.color = "white";
+        }
+        count.innerHTML = i;
+        cards = document.querySelectorAll(".open");
+        if (cards[0].firstElementChild.classList.value == cards[1].firstElementChild.classList.value) {
+            for (let card of cards) {
+                card.classList.remove("open", "show");
+                card.classList.add("match");
+            }
+        }
+        for (let card of cards) {
+            setTimeout(function() { card.classList.remove("open", "show") }, 500);
+        }
+    }
+}
+
+// Monitor clicks and play game
+document.addEventListener("click", function(event) {
+    if (event.target.parentElement.matches(".restart")) {
+        createGame();
+    }
+    if (event.target.matches(".card")) {
+        const card = event.target;
+        showCard(card)
+    }
+}, false)
 
 /*
  * set up the event listener for a card. If a card is clicked:
