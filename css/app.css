@@ -16,7 +16,7 @@ body {
     padding: 0;
 }
 
-body {
+body dialog {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
@@ -107,4 +107,45 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+/*
+ * Styles for Dialog
+ */
+dialog {
+    padding: 2em;
+}
+
+.dialog_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.final {
+    text-align: center;
+    padding: 1.2em;
+    border: 2em;
+}
+
+.stars-final {
+    font-size: 2em;
+    width: 50%;
+}
+
+.moves-final {
+    font-size: 2em;
+}
+
+button {
+    background-color: #02ccba;
+    color: white;
+    width: 40%;
+    padding: 1em;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+    border-color: #02ccba;
 }

@@ -99,7 +99,7 @@ function showCard(card) {
         document.getElementById("star-one").style.color = "white";
     }
     if (document.querySelectorAll(".match").length == 16) {
-        document.querySelector(".final-moves").innerHTML = i;
+        document.querySelector(".moves-final").innerHTML = i;
         winMessage();
     }
 }
