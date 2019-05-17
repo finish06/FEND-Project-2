@@ -22,12 +22,14 @@ function openCardsList(card) {
             }
         }
     }
+    countMoves()
 }
 
 // Move counter
 function countMoves() {
+    const count = document.querySelector(".moves");
     i += 1;
-    return i;
+    count.innerHTML = i;
 }
 
 // Create a list that holds all of your cards
@@ -79,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function showCard(card) {
     card.classList.add("open", "show");
     let openCards = openCardsList(card);
-    const count = document.querySelector(".moves");
     countMoves()
     if (i > 15) {
         document.getElementById("star-three").style.color = "white";
@@ -90,8 +91,6 @@ function showCard(card) {
     if (i > 25) {
         document.getElementById("star-one").style.color = "white";
     }
-    count.innerHTML = i;
-
 }
 
 // Monitor clicks and play game
