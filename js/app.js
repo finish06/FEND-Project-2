@@ -15,14 +15,15 @@ function openCardsList(card) {
                 card.classList.remove("open", "show");
                 card.classList.add("match");
             }
+            countMoves()
         }
         else {
             for (let card of cards) {
                 setTimeout(function() { card.classList.remove("open", "show") }, 500);
             }
+            countMoves()
         }
     }
-    countMoves()
 }
 
 // Move counter
