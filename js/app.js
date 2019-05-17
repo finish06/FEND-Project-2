@@ -1,6 +1,7 @@
 // Global variable to count turns
 var i = 0;
 var cards = [];
+var previous_card = 0;
 
 // Move counter
 function countMoves() {
@@ -110,7 +111,14 @@ document.addEventListener("click", function(event) {
     }
     if (event.target.matches(".card")) {
         const card = event.target;
-        showCard(card)
+        if (previous_card == 0) {
+            previous_card = card;
+            showCard(card)
+        }
+        else if (card.id != previous_card.id) {
+            previous_card = card;
+            showCard(card)
+        }
     }
     if (event.target.matches("#hide")) {
         document.getElementById("winner").close();
