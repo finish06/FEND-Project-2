@@ -127,28 +127,46 @@ h1 {
  * Styles for Dialog
  */
 dialog {
-    padding: 2em;
+    width: 50%;
+    height: 20%;
 }
 
 .dialog_container {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+#winnerMessage {
+    font-size: 1.5em;
+}
+
+.fa-birthday-cake {
+    font-size: 1.5em;
 }
 
 .final {
     text-align: center;
-    padding: 1.2em;
-    border: 2em;
+}
+
+.final_subcontainer {
+    width: 33%;
 }
 
 .stars-final {
     font-size: 2em;
-    width: 50%;
+    width: 33%;
+}
+
+.timer-final {
+    font-size: 2em;
+    width: 33%
 }
 
 .moves-final {
     font-size: 2em;
+    width: 33%
 }
 
 button {

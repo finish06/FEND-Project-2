@@ -86,17 +86,21 @@
     <dialog id="winner">
         <h1 class="final">
             <i class="fa fa-birthday-cake"></i>
-            <span id="winnerMessage">Winner Winner!!</span>
+            <span id="winnerMessage">Winner Winner</span>
             <i class="fa fa-birthday-cake"></i>
         </h1>
         <section class="dialog_container score-panel final">
-        	<ul class="dialog_container stars stars-final">
+        	<ul class="final_subcontainer stars stars-final">
         		<li><i id="star-one" class="fa fa-star"></i></li>
         		<li><i id="star-two" class="fa fa-star"></i></li>
         		<li><i id="star-three" class="fa fa-star"></i></li>
         	</ul>
-            <p><span class="minutesLabel">00</span>:<span class="secondsLabel">00</span></p>
-            <p><span class="moves-final moves">3</span>  Moves</p>
+            <div class="final_subcontainer">
+                <span class="timer-final minutesLabel">00</span> minutes & <span class="timer-final secondsLabel">00</span> seconds
+            </div>
+            <div class="final_subcontainer">
+                <span class="moves-final moves">3</span>  Moves
+            </div>
         </section>
         <div class="dialog_container final">
             <button id="restart">Play Again</button>
