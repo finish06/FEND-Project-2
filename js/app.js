@@ -4,11 +4,24 @@ var cards = [];
 
 // List to hold open cards
 function openCardsList(card) {
-    if (cards.length > 1) {
+    if (cards.length == 2) {
         cards = [];
+        cards.push(card);
     }
-    cards.push(card);
-    return cards;
+    else {
+        cards.push(card);
+        if (cards[0].firstElementChild.classList.value == cards[1].firstElementChild.classList.value) {
+            for (let card of cards) {
+                card.classList.remove("open", "show");
+                card.classList.add("match");
+            }
+        }
+        else {
+            for (let card of cards) {
+                setTimeout(function() { card.classList.remove("open", "show") }, 500);
+            }
+        }
+    }
 }
 
 // Move counter
@@ -66,30 +79,19 @@ document.addEventListener('DOMContentLoaded', function() {
 function showCard(card) {
     card.classList.add("open", "show");
     let openCards = openCardsList(card);
-    if (openCards.length > 1) {
-        const count = document.querySelector(".moves");
-        countMoves()
-        if (i > 15) {
-            document.getElementById("star-three").style.color = "white";
-        }
-        if (i > 20) {
-            document.getElementById("star-two").style.color = "white";
-        }
-        if (i > 25) {
-            document.getElementById("star-one").style.color = "white";
-        }
-        count.innerHTML = i;
-        cards = document.querySelectorAll(".open");
-        if (cards[0].firstElementChild.classList.value == cards[1].firstElementChild.classList.value) {
-            for (let card of cards) {
-                card.classList.remove("open", "show");
-                card.classList.add("match");
-            }
-        }
-        for (let card of cards) {
-            setTimeout(function() { card.classList.remove("open", "show") }, 500);
-        }
+    const count = document.querySelector(".moves");
+    countMoves()
+    if (i > 15) {
+        document.getElementById("star-three").style.color = "white";
     }
+    if (i > 20) {
+        document.getElementById("star-two").style.color = "white";
+    }
+    if (i > 25) {
+        document.getElementById("star-one").style.color = "white";
+    }
+    count.innerHTML = i;
+
 }
 
 // Monitor clicks and play game
