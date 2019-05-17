@@ -1,5 +1,21 @@
 // Global variable to count turns
 var i = 0;
+var cards = [];
+
+// List to hold open cards
+function openCardsList(card) {
+    if (cards.length > 1) {
+        cards = [];
+    }
+    cards.push(card);
+    return cards;
+}
+
+// Move counter
+function countMoves() {
+    i += 1;
+    return i;
+}
 
 // Create a list that holds all of your cards
 function getCards() {
@@ -49,16 +65,17 @@ document.addEventListener('DOMContentLoaded', function() {
 // Show cards
 function showCard(card) {
     card.classList.add("open", "show");
-    if (document.querySelectorAll(".open").length > 1) {
+    let openCards = openCardsList(card);
+    if (openCards.length > 1) {
         const count = document.querySelector(".moves");
-        i += 1;
-        if (i > 10) {
+        countMoves()
+        if (i > 15) {
             document.getElementById("star-three").style.color = "white";
         }
-        if (i > 15) {
+        if (i > 20) {
             document.getElementById("star-two").style.color = "white";
         }
-        if (i > 20) {
+        if (i > 25) {
             document.getElementById("star-one").style.color = "white";
         }
         count.innerHTML = i;
