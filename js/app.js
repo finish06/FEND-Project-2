@@ -2,9 +2,22 @@
 var i = 0;
 var cards = [];
 
+// Move counter
+function countMoves() {
+    const count = document.querySelector(".moves");
+    i += 1;
+    count.innerHTML = i;
+}
+
+//Open Winner Modal
+function winMessage() {
+    const winModal = document.getElementById("winner");
+    winModal.showModal();
+}
+
 // List to hold open cards
 function openCardsList(card) {
-    if (cards.length == 2) {
+    if (cards.length == 2 || cards.length == 0) {
         cards = [];
         cards.push(card);
     }
@@ -15,22 +28,14 @@ function openCardsList(card) {
                 card.classList.remove("open", "show");
                 card.classList.add("match");
             }
-            countMoves()
         }
         else {
             for (let card of cards) {
                 setTimeout(function() { card.classList.remove("open", "show") }, 500);
             }
-            countMoves()
         }
+        countMoves()
     }
-}
-
-// Move counter
-function countMoves() {
-    const count = document.querySelector(".moves");
-    i += 1;
-    count.innerHTML = i;
 }
 
 // Create a list that holds all of your cards
@@ -69,6 +74,7 @@ function createGame() {
     // Set moves to 0
     const count = document.querySelector(".moves");
     count.innerHTML = "0";
+    i = 0;
 }
 
 // Establish game on DOMload
@@ -82,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function showCard(card) {
     card.classList.add("open", "show");
     let openCards = openCardsList(card);
-    countMoves()
     if (i > 15) {
         document.getElementById("star-three").style.color = "white";
     }
@@ -91,6 +96,10 @@ function showCard(card) {
     }
     if (i > 25) {
         document.getElementById("star-one").style.color = "white";
+    }
+    if (document.querySelectorAll(".match").length == 16) {
+        document.querySelector(".final-moves").innerHTML = i;
+        winMessage();
     }
 }
 
@@ -102,6 +111,13 @@ document.addEventListener("click", function(event) {
     if (event.target.matches(".card")) {
         const card = event.target;
         showCard(card)
+    }
+    if (event.target.matches("#hide")) {
+        document.getElementById("winner").close();
+    }
+    if (event.target.matches("#restart")) {
+        document.getElementById("winner").close();
+        createGame();
     }
 }, false)
 
