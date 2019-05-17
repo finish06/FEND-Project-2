@@ -33,6 +33,20 @@ h1 {
     font-weight: 300;
 }
 
+.score-moves {
+    width: 33%;
+    display: inline-block;
+}
+
+.score-timer {
+    width: 33%;
+    display: inline-block;
+}
+
+.stars {
+    width: 22%;
+}
+
 /*
  * Styles for the deck of cards
  */

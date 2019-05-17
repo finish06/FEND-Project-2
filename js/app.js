@@ -2,6 +2,8 @@
 var i = 0;
 var cards = [];
 var previous_card = 0;
+var minutes = 0;
+var seconds = 0;
 
 // Move counter
 function countMoves() {
@@ -10,7 +12,25 @@ function countMoves() {
     count.innerHTML = i;
 }
 
-//Open Winner Modal
+// Timer
+function pad(value) {
+    if (value.toString().length < 2) {
+        return "0".concat(value.toString())
+    }
+    else {
+        return value
+    }
+}
+
+function gameTimer() {
+    timer = setInterval(function() {
+        seconds = seconds + 1;
+        document.querySelector(".secondsLabel").innerHTML = pad(seconds % 60);
+        document.querySelector(".minutesLabel").innerHTML = pad(parseInt(seconds / 60));
+    }, 1000);
+}
+
+// Open Winner Modal
 function winMessage() {
     const winModal = document.getElementById("winner");
     winModal.showModal();
@@ -75,7 +95,12 @@ function createGame() {
     // Set moves to 0
     const count = document.querySelector(".moves");
     count.innerHTML = "0";
+    document.querySelector(".secondsLabel").innerHTML = '00';
+    document.querySelector(".minutesLabel").innerHTML = '00';
+    seconds = 0;
     i = 0;
+    cards = [];
+    previous_card = 0;
 }
 
 // Establish game on DOMload
@@ -83,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     createGame();
     const restart = document.querySelector(".restart");
     restart.addEventListener("click", createGame());
+
 })
 
 // Show cards
@@ -100,6 +126,14 @@ function showCard(card) {
     }
     if (document.querySelectorAll(".match").length == 16) {
         document.querySelector(".moves-final").innerHTML = i;
+        const totalSeconds = seconds;
+        clearInterval(timer)
+        for (let secs of document.querySelectorAll(".secondsLabel")) {
+            secs.innerHTML = pad(totalSeconds % 60);
+        }
+        for (let mins of document.querySelectorAll(".minutesLabel")) {
+            mins.innerHTML = pad(parseInt(totalSeconds / 60));
+        }
         winMessage();
     }
 }
@@ -107,17 +141,19 @@ function showCard(card) {
 // Monitor clicks and play game
 document.addEventListener("click", function(event) {
     if (event.target.parentElement.matches(".restart")) {
+        clearInterval(timer)
         createGame();
     }
     if (event.target.matches(".card")) {
         const card = event.target;
         if (previous_card == 0) {
             previous_card = card;
-            showCard(card)
+            showCard(card);
+            gameTimer();
         }
         else if (card.id != previous_card.id) {
             previous_card = card;
-            showCard(card)
+            showCard(card);
         }
     }
     if (event.target.matches("#hide")) {
