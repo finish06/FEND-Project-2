@@ -4,6 +4,7 @@
 
 * [Project Overview](#project-overview)
 * [Game Instructions](#game-instructions)
+* [Installation](#installation)
 
 ## Project Overview
 
