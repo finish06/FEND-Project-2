@@ -97,6 +97,9 @@ function createGame() {
     count.innerHTML = "0";
     document.querySelector(".secondsLabel").innerHTML = '00';
     document.querySelector(".minutesLabel").innerHTML = '00';
+    for (let star of document.querySelectorAll(".fa-star")) {
+        star.style.color = "#6DFAAA";
+    }
     seconds = 0;
     i = 0;
     cards = [];
@@ -117,12 +120,11 @@ function showCard(card) {
     let openCards = openCardsList(card);
     if (i > 15) {
         document.getElementById("star-three").style.color = "white";
+        document.getElementById("star-three-final").style.color = "white";
     }
     if (i > 20) {
         document.getElementById("star-two").style.color = "white";
-    }
-    if (i > 25) {
-        document.getElementById("star-one").style.color = "white";
+        document.getElementById("star-two-final").style.color = "white";
     }
     if (document.querySelectorAll(".match").length == 16) {
         document.querySelector(".moves-final").innerHTML = i;
