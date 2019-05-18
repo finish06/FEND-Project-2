@@ -4,8 +4,6 @@
 
 * [Project Overview](#project-overview)
 * [Game Instructions](#game-instructions)
-* [Instructions](#instructions)
-* [Contributing](#contributing)
 
 ## Project Overview
 
@@ -18,3 +16,7 @@ For each turn, a player will:
 - flip over a second card
 - matching cards will stay up
 - non-matching cards will flip down after 0.5 seconds
+
+## Installation
+Place folder, i.e. FEND-Project-2, in webserver root folder
+- Debian distro: ``/var/www/html/`
