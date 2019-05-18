@@ -1,6 +1,6 @@
 // Global variable to count turns
 let i = 0;
-let cards = [];
+let cardsList = [];
 let previous_card = 0;
 let minutes = 0;
 let seconds = 0;
@@ -38,20 +38,20 @@ function winMessage() {
 
 // List to hold open cards
 function openCardsList(card) {
-    if (cards.length == 2 || cards.length == 0) {
-        cards = [];
-        cards.push(card);
+    if (cardsList.length == 2 || cardsList.length == 0) {
+        cardsList = [];
+        cardsList.push(card);
     }
     else {
-        cards.push(card);
-        if (cards[0].firstElementChild.classList.value == cards[1].firstElementChild.classList.value) {
-            for (let card of cards) {
+        cardsList.push(card);
+        if (cardsList[0].firstElementChild.classList.value == cardsList[1].firstElementChild.classList.value) {
+            for (let card of cardsList) {
                 card.classList.remove("open", "show");
                 card.classList.add("match");
             }
         }
         else {
-            for (let card of cards) {
+            for (let card of cardsList) {
                 setTimeout(function() { card.classList.remove("open", "show") }, 500);
             }
         }
@@ -92,7 +92,7 @@ function createGame() {
         document.querySelector(".deck").append(card);
         card.classList.remove("match", "open", "show");
     }
-    // Set moves to 0
+    // Reset all trackers
     const count = document.querySelector(".moves");
     count.innerHTML = "0";
     document.querySelector(".secondsLabel").innerHTML = '00';
@@ -102,15 +102,18 @@ function createGame() {
     }
     seconds = 0;
     i = 0;
-    cards = [];
     previous_card = 0;
+    // Empty card array
+    while (cardsList.length > 0) {
+        cardsList.pop();
+    }
 }
 
 // Establish game on DOMload
 document.addEventListener('DOMContentLoaded', function() {
     createGame();
-    const restart = document.querySelector(".restart");
-    restart.addEventListener("click", createGame());
+    // const restart = document.querySelector(".restart");
+    // restart.addEventListener("click", createGame());
 
 })
 
