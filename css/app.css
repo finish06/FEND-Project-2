@@ -16,7 +16,8 @@ body {
     padding: 0;
 }
 
-body dialog {
+body,
+dialog {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
@@ -161,12 +162,12 @@ dialog {
 
 .timer-final {
     font-size: 2em;
-    width: 33%
+    width: 33%;
 }
 
 .moves-final {
     font-size: 2em;
-    width: 33%
+    width: 33%;
 }
 
 button {
