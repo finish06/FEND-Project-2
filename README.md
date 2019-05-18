@@ -2,19 +2,19 @@
 
 ## Table of Contents
 
+* [Project Overview](#project-overview)
+* [Game Instructions](#game-instructions)
 * [Instructions](#instructions)
 * [Contributing](#contributing)
 
-## Instructions
+## Project Overview
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+The purpose of this project is to apply recently learned HTML, CSS & JavaScript skills to create a memory match game.
 
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+## Game Instructions
+The objective of the game is to find the corresponding match for the 8 'cards' in the deck.
+For each turn, a player will:
+- flip over an initial card
+- flip over a second card
+- matching cards will stay up
+- non-matching cards will flip down after 0.5 seconds
