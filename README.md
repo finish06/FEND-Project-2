@@ -20,4 +20,4 @@ For each turn, a player will:
 
 ## Installation
 Place folder, i.e. FEND-Project-2, in webserver root folder
-- Debian distro: ``/var/www/html/`
+- Debian distro: `/var/www/html/`
