@@ -1,9 +1,9 @@
 // Global variable to count turns
-var i = 0;
-var cards = [];
-var previous_card = 0;
-var minutes = 0;
-var seconds = 0;
+let i = 0;
+let cards = [];
+let previous_card = 0;
+let minutes = 0;
+let seconds = 0;
 
 // Move counter
 function countMoves() {
