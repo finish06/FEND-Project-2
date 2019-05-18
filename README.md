@@ -21,3 +21,7 @@ For each turn, a player will:
 ## Installation
 Place folder, i.e. FEND-Project-2, in webserver root folder
 - Debian distro: `/var/www/html/`
+
+## Dependencies
+- Bootstrap4: Font Awesome icons
+- Good Fonts: Coda font
